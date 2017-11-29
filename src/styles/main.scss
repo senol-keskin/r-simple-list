@@ -1,0 +1,31 @@
+*,*:after,*:before{
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    font: 1rem/1.35 sans-serif;        
+}
+
+div.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 1rem;
+}
+
+div.child {
+    margin: .25em 0 .25em 1em;
+    font-style: italic;
+    font-size: 75%;
+}
+
+div.list-wrapper {
+    margin: .5em 0 .85em;
+}
+
+div.list-item {
+    margin-bottom: .85em;
+}
