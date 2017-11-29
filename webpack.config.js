@@ -17,7 +17,7 @@ module.exports = {
   },
   devtool: getDevTool(),
   devServer: {
-    port: 3000,
+    port: 3001,
   },
   module: {
     loaders: [
