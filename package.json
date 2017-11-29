@@ -1,8 +1,7 @@
 {
-  "name": "adphorus",
+  "name": "todoapp",
   "bin": {},
   "version": "1.1.0",
-  "description": "",
   "main": "main.js",
   "dependencies": {},
   "devDependencies": {
@@ -13,6 +12,11 @@
     "babel-preset-latest": "~6.24.1",
     "babel-preset-react": "^6.16.0",
     "css-loader": "^0.28.0",
+    "eslint": "^4.12.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.5.1",
     "extract-text-webpack-plugin": "~2.1.0",
     "html-webpack-plugin": "^2.28.0",
     "node-sass": "~4.5.2",
@@ -26,9 +30,18 @@
   },
   "scripts": {
     "build": "./node_modules/webpack/bin/webpack.js -p",
-    "start": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot --progress --colors --inline",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start":
+      "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot --progress --colors --inline"
   },
   "author": "msenolkeskin@gmail.com",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BarbarConan/r-simple-todo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BarbarConan/r-simple-todo/issues"
+  },
+  "homepage": "https://github.com/BarbarConan/r-simple-todo#readme",
+  "description": ""
 }
