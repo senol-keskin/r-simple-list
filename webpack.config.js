@@ -1,44 +1,28 @@
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-
-function getDevTool() {
-  if (process.env.NODE_ENV !== 'production') {
-    return 'source-map'; //enables source map
-  }
-
-  return false;
-}
+const path = require('path');
 
 module.exports = {
-  entry: {
-    main: './src/scripts/main.js',
-  },
+  entry: './src/scripts/main.js',
   output: {
-    filename: 'dist/scripts/[name].js',
+    path: path.join(__dirname, 'public'),
+    filename: 'bundle.js',
   },
-  devtool: getDevTool(),
-  devServer: {
-    port: 3001,
-  },
+  mode: 'development',
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
-        query: {
-          presets: ['react', 'es2015'],
-        },
+        test: /\.js$/,
+        exclude: /node_modules/,
       },
       {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('css-loader!sass-loader'),
+        test: /\.s?css$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
     ],
   },
-  plugins: [
-    new ExtractTextPlugin({
-      filename: 'dist/styles/main.css',
-      allChunks: true,
-    }),
-  ],
+  devtool: 'cheap-module-eval-source-map',
+  devServer: {
+    contentBase: path.join(__dirname, 'public'),
+    port: 3000,
+  },
 };

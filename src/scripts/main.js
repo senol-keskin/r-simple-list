@@ -2,43 +2,30 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-import style from '../styles/main.scss';
-
-const rootElement = document.getElementById('root');
+import '../styles/main.scss';
 
 const api = {
-  fetchData: function() {
-    var dataSource = 'dataset.json';
-
-    return axios.get(dataSource).then(function(res) {
-      return res.data;
-    });
-  },
+  fetchData: () => axios.get('dataset.json').then(res => res.data),
 };
 
 class List extends React.Component {
-  constructor(props) {
+  constructor() {
     super();
     this.state = {
       listData: [],
     };
   }
 
-  componentDidMount() {
-    api.fetchData().then(
-      function(data) {
-        this.setState(function() {
-          return {
-            listData: data,
-          };
-        });
-      }.bind(this),
-    );
+  componentWillMount() {
+    api.fetchData().then(data => {
+      this.setState(() => ({
+        listData: data,
+      }));
+    });
   }
 
   setItems(index) {
-    console.log(index);
-    var newList = this.state.listData.slice();
+    const newList = this.state.listData.slice();
     newList.splice(index, 1);
     this.setState({
       listData: newList,
@@ -49,30 +36,29 @@ class List extends React.Component {
     return (
       <div className="list-wrapper">
         {this.state.listData.map(
-          function(value, index, arr) {
-            return !value.hasOwnProperty('parentID') ? (
+          (value, index, arr) =>
+            !Object.prototype.hasOwnProperty.call(value, 'parentID') && (
               <div key={value.ID} className="list-item">
-                <div className="parent" onClick={this.setItems.bind(this, index)}>
+                <div
+                  className="parent"
+                  onClick={() => this.setItems(index)}
+                  onKeyPress={() => this.setItems(index)}
+                  role="button"
+                  tabIndex="-1"
+                >
                   {value.Name} {value.parentID}
                 </div>
-                {arr
-                  .filter(function(parent) {
-                    return value.ID === parent.parentID;
-                  })
-                  .map(function(parse) {
-                    return (
-                      <div key={parse.Name} className="child">
-                        {parse.Name}
-                      </div>
-                    );
-                  })}
+                {arr.filter(parent => value.ID === parent.parentID).map(parse => (
+                  <div key={parse.Name} className="child">
+                    {parse.Name}
+                  </div>
+                ))}
               </div>
-            ) : null;
-          }.bind(this),
+            ),
         )}
       </div>
     );
   }
 }
 
-ReactDOM.render(<List />, rootElement);
+ReactDOM.render(<List />, document.getElementById('root'));
