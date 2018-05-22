@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
+import Parent from '../components/Parent';
+
 import '../styles/main.scss';
 
 const api = {
@@ -9,12 +11,9 @@ const api = {
 };
 
 class List extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      listData: [],
-    };
-  }
+  state = {
+    listData: [],
+  };
 
   componentWillMount() {
     api.fetchData().then(data => {
@@ -24,13 +23,13 @@ class List extends React.Component {
     });
   }
 
-  setItems(index) {
+  deleteItem = index => {
     const newList = this.state.listData.slice();
     newList.splice(index, 1);
     this.setState({
       listData: newList,
     });
-  }
+  };
 
   render() {
     return (
@@ -39,24 +38,14 @@ class List extends React.Component {
           (value, index, arr) =>
             !Object.prototype.hasOwnProperty.call(value, 'parentID') && (
               <div key={value.ID} className="list-item">
-                <div className="parent">
-                  <div>
-                    {value.Name} {value.parentID}
-                  </div>
-                  <button
-                    className="btn-delete"
-                    type="button"
-                    onClick={() => this.setItems(index)}
-                    onKeyPress={() => this.setItems(index)}
-                  >
-                    Delete
-                  </button>
-                </div>
-                {arr.filter(parent => value.ID === parent.parentID).map(parse => (
-                  <div key={parse.ID} className="child">
-                    {parse.Name}
-                  </div>
-                ))}
+                <Parent data={value} deleteFn={this.deleteItem} index={index} />
+                {arr.filter(parent => value.ID === parent.parentID).length > 0 && (
+                  <ul className="childs">
+                    {arr
+                      .filter(parent => value.ID === parent.parentID)
+                      .map(child => <li key={child.ID}>{child.Name}</li>)}
+                  </ul>
+                )}
               </div>
             ),
         )}
