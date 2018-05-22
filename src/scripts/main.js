@@ -39,17 +39,21 @@ class List extends React.Component {
           (value, index, arr) =>
             !Object.prototype.hasOwnProperty.call(value, 'parentID') && (
               <div key={value.ID} className="list-item">
-                <div
-                  className="parent"
-                  onClick={() => this.setItems(index)}
-                  onKeyPress={() => this.setItems(index)}
-                  role="button"
-                  tabIndex="-1"
-                >
-                  {value.Name} {value.parentID}
+                <div className="parent">
+                  <div>
+                    {value.Name} {value.parentID}
+                  </div>
+                  <button
+                    className="btn-delete"
+                    type="button"
+                    onClick={() => this.setItems(index)}
+                    onKeyPress={() => this.setItems(index)}
+                  >
+                    Delete
+                  </button>
                 </div>
                 {arr.filter(parent => value.ID === parent.parentID).map(parse => (
-                  <div key={parse.Name} className="child">
+                  <div key={parse.ID} className="child">
                     {parse.Name}
                   </div>
                 ))}

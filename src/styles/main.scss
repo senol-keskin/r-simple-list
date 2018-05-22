@@ -13,22 +13,30 @@ body {
   font: 1rem/1.35 sans-serif;
 }
 
-div.container {
-  max-width: 1200px;
+button {
+  appearance: none;
+}
+
+.container {
+  max-width: 60rem;
   margin: auto;
   padding: 1rem;
 }
 
-div.child {
-  margin: 0.25em 0 0.25em 1em;
+.child {
+  margin: 0.25rem 0 0.25rem 1rem;
   font-style: italic;
   font-size: 75%;
 }
 
-div.list-wrapper {
-  margin: 0.5em 0 0.85em;
+.list-wrapper {
+  margin: 0.5rem 0 0.85rem;
 }
 
-div.list-item {
-  margin-bottom: 0.85em;
+.list-item {
+  margin-bottom: 0.85rem;
+}
+
+.btn-delete {
+  color: darken($color: red, $amount: 6.5%);
 }

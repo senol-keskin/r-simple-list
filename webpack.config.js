@@ -16,11 +16,17 @@ module.exports = {
       },
       {
         test: /\.s?css$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        exclude: /node_modules/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader', options: { importLoaders: 1, sourceMap: true } },
+          { loader: 'sass-loader', options: { sourceMap: true } },
+          { loader: 'postcss-loader', options: { sourceMap: true } },
+        ],
       },
     ],
   },
-  devtool: 'cheap-module-eval-source-map',
+
   devServer: {
     contentBase: path.join(__dirname, 'public'),
     port: 3000,
