@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-import Parent from '../components/Parent';
+import Parent from './components/Parent';
 
-import '../styles/main.scss';
+import './styles/main.scss';
 
 const api = {
   fetchData: () => axios.get('dataset.json').then(res => res.data),
