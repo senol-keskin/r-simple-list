@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 import Parent from './components/Parent';
+import Childs from './components/Childs';
 
 import './styles/main.scss';
 
@@ -39,13 +40,7 @@ class List extends React.Component {
             !Object.prototype.hasOwnProperty.call(value, 'parentID') && (
               <div key={value.ID} className="list-item">
                 <Parent data={value} deleteFn={this.deleteItem} index={index} />
-                {arr.filter(parent => value.ID === parent.parentID).length > 0 && (
-                  <ul className="childs">
-                    {arr
-                      .filter(parent => value.ID === parent.parentID)
-                      .map(child => <li key={child.ID}>{child.Name}</li>)}
-                  </ul>
-                )}
+                <Childs data={arr} parentid={value.ID} />
               </div>
             ),
         )}

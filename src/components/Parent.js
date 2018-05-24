@@ -2,13 +2,13 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 
 export default props => {
-  const { Name, ID } = props.data;
+  const {
+    data: { Name },
+  } = props;
 
   return (
     <div className="parent">
-      <div className="column">
-        {Name} {ID}
-      </div>
+      <div className="column">{Name}</div>
       <div className="column">
         <button
           className="btn-delete"
