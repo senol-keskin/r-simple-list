@@ -19,11 +19,15 @@ button {
   appearance: none;
   border: 0;
   border-radius: 3px;
-  background-color: transparent;
+  background-color: lighten($color: black, $amount: 88%);
   line-height: 1;
   cursor: auto;
   transition: background-color 0.3s ease;
   font-size: 0.75rem;
+
+  &:hover {
+    background-color: lighten($color: black, $amount: 80%);
+  }
 }
 
 .container {
@@ -34,12 +38,14 @@ button {
 
 .btn-delete {
   color: darken($color: red, $amount: 2%);
-  background-color: lighten($color: black, $amount: 88%);
+}
 
-  &:hover {
-    background-color: lighten($color: black, $amount: 80%);
+.btn-collapse {
+  &:before {
+    content: '+';
   }
 }
+
 .parent {
   display: flex;
   align-items: center;
@@ -56,8 +62,16 @@ button {
 .list-item {
   padding: 0.6rem 0;
   border-bottom: 1px solid #efefef;
+  &.collapsed {
+    .childs {
+      display: none;
+    }
+  }
 }
 
 .childs {
   // display: none;
+  font-size: 0.75rem;
+  font-style: italic;
+  padding: 0.5rem 1rem;
 }
