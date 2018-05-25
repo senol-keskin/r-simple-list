@@ -19,7 +19,7 @@ export default props => {
           {hasChild && (
             <div className="column">
               <button
-                className="btn-collapse"
+                className={`btn-collapse ${isVisible}`}
                 type="button"
                 onClick={() => props.collaspeFn(item)}
               />

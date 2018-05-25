@@ -31,7 +31,7 @@ button {
 }
 
 .container {
-  max-width: 60rem;
+  max-width: 40rem;
   margin: auto;
   padding: 1rem;
 }
@@ -42,7 +42,12 @@ button {
 
 .btn-collapse {
   &:before {
-    content: '+';
+    content: '-';
+  }
+  &.collapsed {
+    &:before {
+      content: '+';
+    }
   }
 }
 
@@ -70,7 +75,6 @@ button {
 }
 
 .childs {
-  // display: none;
   font-size: 0.75rem;
   font-style: italic;
   padding: 0.5rem 1rem;
