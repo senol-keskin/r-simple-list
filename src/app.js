@@ -34,7 +34,7 @@ class List extends React.Component {
       listData: prevState.listData.map(el => {
         const arr = el;
         if (el === item) {
-          arr.isVisible = !el.isVisible;
+          arr.isCollapsed = !el.isCollapsed;
         }
         return arr;
       }),
@@ -43,13 +43,7 @@ class List extends React.Component {
 
   render() {
     return (
-      <div className="list-item">
-        <ListItems
-          data={this.state.listData}
-          deleteFn={this.deleteItem}
-          collaspeFn={this.collapse}
-        />
-      </div>
+      <ListItems data={this.state.listData} deleteFn={this.deleteItem} collaspeFn={this.collapse} />
     );
   }
 }

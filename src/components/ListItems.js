@@ -9,7 +9,7 @@ export default props => {
   return parentItems.map(item => {
     const childItems = data.filter(child => child.parentID === item.ID);
     const hasChild = childItems.length > 0;
-    const isVisible = item.isVisible ? 'collapsed' : '';
+    const isVisible = item.isCollapsed ? 'collapsed' : '';
 
     return (
       <div className={`list-item ${isVisible}`} key={item.ID}>
