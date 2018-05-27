@@ -53,14 +53,10 @@ button {
     }
   }
 }
+
 .list-item {
   padding: 0.6rem 0;
   border-bottom: 1px solid #efefef;
-  &.collapsed {
-    .childs {
-      display: none;
-    }
-  }
 }
 
 .childs {

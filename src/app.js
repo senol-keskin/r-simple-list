@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
@@ -10,7 +10,7 @@ const api = {
   fetchData: () => axios.get('/dataset.json').then(res => res.data),
 };
 
-class List extends React.Component {
+class List extends Component {
   state = {
     listData: [],
   };
